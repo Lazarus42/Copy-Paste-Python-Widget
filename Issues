@@ -1,1 +1,4 @@
 The current issue is continuously monitoring the keyboard input. Terminal is saying that this requires administrative privileges. I'll try to fix this.
+
+I will have to have a file that I write to and from in order for this to work. 
+I'm not sure if saving the global information in the file itself is a good idea.
