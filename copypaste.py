@@ -76,13 +76,13 @@ def paste_from_queue(curr_queue, pos):
 ###Now to do: Get this running at all times in the background --  DONE
 ###To do: Current issue: Not actually adding anything to the queue
 def main():
-    # global curr_queue
-    # global max_len
-    # global prev_copied
-    # curr_queue = [Tk().clipboard_get()]
-    # print(curr_queue, "printing the initial curr_queue")
-    # max_len = 5
-    # prev_copied = Tk().clipboard_get()
+    global curr_queue
+    global max_len
+    global prev_copied
+    curr_queue = [Tk().clipboard_get()]
+    print(curr_queue, "printing the initial curr_queue")
+    max_len = 5
+    prev_copied = Tk().clipboard_get()
     ###Now start listening
     with keyboard.GlobalHotKeys({
             '<cmd>+c': on_activate_copy,
@@ -95,11 +95,4 @@ def main():
         h.join()
 
 if __name__ == "__main__":
-    global curr_queue
-    global max_len
-    global prev_copied
-    curr_queue = [Tk().clipboard_get()]
-    #print(curr_queue, "printing the initial curr_queue")
-    max_len = 5
-    prev_copied = Tk().clipboard_get()
     main()
