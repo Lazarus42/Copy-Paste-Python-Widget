@@ -2,3 +2,8 @@ The current issue is continuously monitoring the keyboard input. Terminal is say
 
 I will have to have a file that I write to and from in order for this to work. 
 I'm not sure if saving the global information in the file itself is a good idea.
+
+
+Update: The previous problem is fixed.
+Now, the issue is that it requires trying to copy something two times before it gets added to the copy queue. The problem seems to come from the 
+prev_copied variable getting updated too soon? 
