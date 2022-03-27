@@ -1,15 +1,12 @@
-from tkinter import Tk
-import pandas as pd
-import keyboard
 from pynput import keyboard
 import sys
+from pyperclip import copy, paste
 
 class React_to_Keyboard():
     def __init__(self):
-        print(Tk().clipboard_get())
-        self.curr_queue = [Tk().clipboard_get()]
+        self.curr_queue = [paste()]
         self.max_len = 5
-        self.prev_copied = Tk().clipboard_get()
+        self.prev_copied = paste()
 
     def on_activate_copy(self):
         (self.curr_queue, self.prev_copied) = add_to_queue(self.curr_queue, self.max_len, self.prev_copied)
@@ -30,7 +27,6 @@ class React_to_Keyboard():
         paste_from_queue(self.curr_queue, 4)
 
     def on_release(self):
-        print("Fuck me mate")
         raise sys.exit(1)
 
 ###Rough outline -- You can keep up to 5 things copied.
@@ -38,7 +34,7 @@ class React_to_Keyboard():
 ###Of the queue. If there are too many items in the queue, remove the last item
 ###Before adding the new copied text
 def add_to_queue(curr_queue, max_len, prev_copied):
-    copied_Text = Tk().clipboard_get()
+    copied_Text = paste()
     if copied_Text == prev_copied:
         return (curr_queue, prev_copied)
     if len(curr_queue) > max_len:
@@ -53,8 +49,7 @@ def paste_from_queue(curr_queue, pos):
     ###Check that the position is valid
     if pos < 0 or pos >= len(curr_queue):
         return
-    df = pd.DataFrame([curr_queue[pos]])
-    df.to_clipboard(index = False, header = False)
+    copy(curr_queue[pos])
     return
 
 ###The program should continuously run in the background and check if new
