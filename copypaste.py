@@ -12,7 +12,6 @@ class React_to_Keyboard():
     def on_activate_copy(self):
         sleep(.01)
         (self.curr_queue, self.prev_copied) = add_to_queue(self.curr_queue, self.max_len, self.prev_copied)
-        print(self.curr_queue)
 
     def on_activate_paste_1(self):
         paste_from_queue(self.curr_queue, 0)
