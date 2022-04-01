@@ -1,6 +1,7 @@
 from pynput import keyboard
 import sys
 from pyperclip import copy, paste
+from time import sleep
 
 class React_to_Keyboard():
     def __init__(self):
@@ -9,7 +10,9 @@ class React_to_Keyboard():
         self.prev_copied = paste()
 
     def on_activate_copy(self):
+        sleep(.01)
         (self.curr_queue, self.prev_copied) = add_to_queue(self.curr_queue, self.max_len, self.prev_copied)
+        print(self.curr_queue)
 
     def on_activate_paste_1(self):
         paste_from_queue(self.curr_queue, 0)
@@ -27,6 +30,7 @@ class React_to_Keyboard():
         paste_from_queue(self.curr_queue, 4)
 
     def on_release(self):
+        self.curr_queue = []
         raise sys.exit(1)
 
 ###Rough outline -- You can keep up to 5 things copied.
