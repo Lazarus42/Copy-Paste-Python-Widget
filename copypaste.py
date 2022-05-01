@@ -30,9 +30,11 @@ def add_to_queue(curr_queue, max_len, prev_copied):
     copied_Text = paste()
     if copied_Text == prev_copied:
         return (curr_queue, prev_copied)
+
     if len(curr_queue) > max_len:
         curr_queue = [copied_Text] + curr_queue[:4]
         return (curr_queue, copied_Text)
+
     curr_queue = [copied_Text] + curr_queue
     return (curr_queue, copied_Text)
 
@@ -41,6 +43,7 @@ def paste_from_queue(curr_queue, pos):
     ###Check that the position is valid
     if pos < 0 or pos >= len(curr_queue):
         return
+
     copy(curr_queue[pos])
     return
 
